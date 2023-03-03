@@ -280,6 +280,8 @@ class AccountMove(models.Model):
 
     def _compute_amount_one(self):
         """Perform totals computation of a move with global discounts."""
+        # Update and recompute lines of invoice_global_discount_ids
+        self._recompute_dynamic_lines(recompute_all_taxes=True)
         if not self.invoice_global_discount_ids:
             self.amount_global_discount = 0.0
             self.amount_untaxed_before_global_discounts = 0.0
