@@ -100,12 +100,11 @@ class TestAccountInvoiceSupplierRefUnique(AccountTestInvoicingCommon):
                 {
                     "date": fields.Date.today(),
                     "reason": "no reason",
-                    "refund_method": "refund",
                     "journal_id": self.invoice.journal_id.id,
                 }
             )
         )
-        reversal = move_reversal.reverse_moves()
+        reversal = move_reversal.refund_moves()
         refund = self.env["account.move"].browse(reversal["res_id"])
         self.assertNotEqual(self.invoice.ref, "")
         self.assertEqual(refund.ref, "")
