@@ -10,7 +10,6 @@
         <field name="inherit_id" ref="account.res_config_settings_view_form" />
         <field name="arch" type="xml">
             <xpath expr="//block[@id='account_vendor_bills']" position="inside">
-
                 <setting
                     id="show_purchase_receipts"
                     Title="If you check this box, the system verifies that supplier invoice number is unique across the system."
@@ -24,7 +23,6 @@
                         <field name="check_invoice_supplier_number" />
                     </div>
                 </setting>
-
             </xpath>
         </field>
     </record>
